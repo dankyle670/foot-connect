@@ -1,0 +1,60 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "Créez votre profil",
+    description:
+      "Personnalisez votre compte avec vos informations et photo pour vous démarquer des autres joueurs.",
+    icon: "mdi:account-circle",
+  },
+  {
+    title: "Choisissez votre position",
+    description:
+      "Définissez votre rôle sur le terrain : attaquant, défenseur, milieu, ou gardien. Faites savoir où vous excellez !",
+    icon: "mdi:soccer-field",
+  },
+  {
+    title: "Trouvez une partie",
+    description:
+      "Rejoignez des matchs près de chez vous et connectez-vous avec d'autres passionnés de football.",
+    icon: "mdi:magnify",
+  },
+  {
+    title: "Réservez pour votre équipe",
+    description:
+      "Réservez un terrain pour votre équipe et planifiez vos prochains matchs en toute simplicité.",
+    icon: "mdi:calendar-check",
+  },
+  {
+    title: "Brillez sur le terrain",
+    description:
+      "Participez à des matchs, gagnez en visibilité, et améliorez vos statistiques en jouant avec les meilleurs.",
+    icon: "mdi:trophy",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    Foot Connect : Le terrain est à vous !
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Créez votre profil, choisissez votre position, trouvez une partie ou réservez pour votre équipe, et brillez sur le terrain.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {features.map((item) => (
+    <div class="flex gap-4 items-start">
+      <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+        <Icon class="text-white" name={item.icon} />
+      </div>
+      <div>
+        <h3 class="font-semibold text-lg">{item.title}</h3>
+        <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+      </div>
+    </div>
+  ))}
+</div>
