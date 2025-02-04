@@ -1,57 +1,65 @@
 ---
-import { getCollection } from "astro:content";
 import { Picture } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+import DanielPhoto from "assets/IMG_1716.jpg"; // Import de ta photo
 ---
 
-<Layout title="About">
+<Layout title="À propos">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title">À propos</Fragment>
+      <Fragment slot="desc">Rencontrez le fondateur de DK Group.</Fragment>
     </Sectionhead>
 
     <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
       <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Astro.
+        Inspirer le monde avec Foot Connect.
       </h2>
       <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
+        Je suis Daniel Komoe, fondateur de DK Group et visionnaire derrière Foot Connect. Mon objectif est de révolutionner la façon dont les joueurs de football se connectent avec les complexes sportifs en Côte d’Ivoire et au-delà. 🚀
       </p>
     </div>
-    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                width={400}
-                height={400}
-                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square"
-              />
-            </div>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">{teamMemberEntry.data.name}</h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
-            </div>
-          </div>
-        ))
-      }
+    <div class="grid md:grid-cols-1 gap-10 mx-auto max-w-4xl mt-12">
+      <div class="group flex justify-center items-center">
+        <div class="custom-photo-container">
+          <Picture
+            src={DanielPhoto}
+            alt="Daniel Komoe - Fondateur"
+            sizes="(max-width: 800px) 90vw, 300px"
+            width={300}
+            height={300}
+            class="custom-photo"
+          />
+        </div>
+
+        <div class="mt-4 text-center">
+          <h2 class="text-lg text-gray-800">Daniel Komoe</h2>
+          <h3 class="text-sm text-slate-500">Fondateur & PDG de DK Group</h3>
+        </div>
+      </div>
     </div>
   </Container>
 </Layout>
+
+<style>
+  .custom-photo-container {
+    max-width: 300px;   /* Limite la largeur maximale */
+    max-height: 300px;  /* Limite la hauteur maximale */
+    overflow: hidden;   /* Évite le dépassement de l'image */
+    border-radius: 15px; /* Coins arrondis pour un rendu plus doux */
+  }
+
+  .custom-photo {
+    width: 100%;         /* Rend la photo responsive */
+    height: auto;        /* Garde les proportions de l'image */
+    object-fit: cover;   /* Ajuste bien la photo dans le cadre */
+    transition: transform 0.3s ease-in-out; /* Transition fluide pour l'effet hover */
+  }
+
+  .custom-photo:hover {
+    transform: scale(1.05); /* Légère animation de zoom au survol */
+  }
+</style>

@@ -1,50 +1,79 @@
 ---
 import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
+import AppLogo from "assets/footconnect.png";
+import PromoPoster from "assets/landings.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
-  <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Bienvenue sur Foot Connect,
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      la plateforme où joueurs et complexes sportifs se rencontrent pour transformer le football en passion partagée !
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <!-- Left Column: Logo and Content -->
+  <div class="flex flex-col items-start">
+    <div class="mb-6 pt--10">
+      <Picture
+        src={AppLogo}
+        alt="Foot Connect Logo"
+        widths={[500, 500]}
+        sizes="(max-width: 800px) 100vw, 200px"
+        class="h-30 w-auto"
+      />
+    </div>
 
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-         GitHub Repo
-      </Link>
+    <div>
+      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+        Bienvenue sur Foot Connect,
+      </h1>
+      <p class="text-lg mt-4 text-slate-600 max-w-xl">
+        La plateforme où joueurs et complexes sportifs se rencontrent pour transformer le football en passion partagée !
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <Link
+          href=""
+          target="_blank"
+          class="flex gap-1 items-center justify-center"
+          rel="noopener"
+        >
+          <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
+        </Link>
+        <Link
+          size="lg"
+          style="outline"
+          rel="noopener"
+          href=""
+          class="flex gap-1 items-center justify-center"
+          target="_blank"
+        >
+          <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
+          GitHub Repo
+        </Link>
+      </div>
     </div>
   </div>
+
+  <!-- Right Column: Promo Poster with Adjustable Size and Position -->
+  <div class="relative py-6 flex justify-center items-center">
+    <Picture
+      src={PromoPoster}
+      alt="Foot Connect Promotional Poster"
+      class="custom-poster"
+    />
+  </div>
 </main>
+
+<style>
+  .custom-poster {
+    position: relative; /* Change to absolute if you want to position relative to the container */
+    width: 4  00px; /* Adjust the width here */
+    height: auto;  /* Maintains aspect ratio, you can set a specific height if needed */
+    top: 20px;     /* Adjust vertical position */
+    left: 30px;    /* Adjust horizontal position */
+    transform: translate(0, 0); /* Fine-tuning position if needed */
+    border-radius: 15px; /* Optional rounded corners */
+    transition: all 0.3s ease-in-out; /* Smooth resizing and positioning transitions */
+  }
+
+  /* Example hover effect if you want some interaction */
+  .custom-poster:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+  }
+</style>
