@@ -1,0 +1,68 @@
+---
+import Form from "../components/Form.astro";
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foot Connect - Login</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Foot Connect</h1>
+    <h2>Login to Your Account</h2>
+    <Form type="login" buttonText="Login" />
+    <p>Don't have an account? <a href="/signup">Sign Up Here</a></p>
+  </div>
+</body>
+</html>
+
+<style>
+  body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  h1 {
+    color: #00796b;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  p {
+    margin-top: 15px;
+    color: #555;
+  }
+
+  a {
+    color: #00796b;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
