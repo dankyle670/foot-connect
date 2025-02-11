@@ -1,5 +1,7 @@
 ---
 import Form from "../components/Form.astro";
+
+const backendUrl = "https://footconnect-server.netlify.app/api/signup"; // Correct backend signup URL
 ---
 
 <html lang="en">
@@ -7,14 +9,14 @@ import Form from "../components/Form.astro";
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Foot Connect - Sign Up</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/">
 </head>
 <body>
   <div class="container">
     <h1>Foot Connect</h1>
     <h2>Create Your Account</h2>
-    <Form type="signup" buttonText="Sign Up" />
-    <p>Already have an account? <a href="/">Login Here</a></p>
+    <Form type="signup" buttonText="Sign Up" backendUrl={backendUrl} />
+    <p>Already have an account? <a href="/login">Login Here</a></p>
   </div>
 </body>
 </html>

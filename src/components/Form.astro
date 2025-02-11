@@ -1,15 +1,51 @@
 ---
-const { type, buttonText } = Astro.props;
+const { type, buttonText, backendUrl } = Astro.props;
 ---
 
-<form class="form">
+<form class="form" onsubmit="handleSubmit(event)">
   {type === "signup" && (
-    <input type="text" placeholder="Full Name" required />
+    <>
+      <input type="text" id="firstName" placeholder="First Name" required />
+      <input type="text" id="lastName" placeholder="Last Name" required />
+    </>
   )}
-  <input type="email" placeholder="Email" required />
-  <input type="password" placeholder="Password" required />
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="password" id="password" placeholder="Password" required />
   <button type="submit">{buttonText}</button>
 </form>
+
+<script>
+  async function handleSubmit(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const formData = {
+      name: document.getElementById("firstName").value + " " + document.getElementById("lastName").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+    };
+
+    try {
+      const response = await fetch("{backendUrl}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Signup successful! Redirecting to login...");
+        window.location.href = "/login"; // Redirect to login page
+      } else {
+        alert("Signup failed: " + data.message);
+      }
+    } catch (error) {
+      console.error("Signup error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  }
+</script>
 
 <style>
   .form {
